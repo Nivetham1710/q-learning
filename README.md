@@ -4,55 +4,53 @@ To develop a Python program to find the optimal policy for the given RL environm
 
 ## PROBLEM STATEMENT
 The bandit slippery walk problem is a reinforcement learning problem in which an agent must learn to navigate a 7-state environment in order to reach a goal state. The environment is slippery, so the agent has a chance of moving in the opposite direction of the action it takes.
-
-#### STATE 
+#### STATE
 
 The environment has 7 states:
 
-* Two Terminal States: G: The goal state & H: A hole state.
-* Five Transition states / Non-terminal States including S: The starting state.
-    
+*    Two Terminal States: G: The goal state & H: A hole state.
+*    Five Transition states / Non-terminal States including S: The starting state.
+
 #### ACTION
 
 The agent can take two actions:
 
- * R: Move right.
- * L: Move left.
+*    R: Move right.
+*    L: Move left.
 
 #### TRANSITION PROBABILITIES
 
 The transition probabilities for each action are as follows:
 
-* 50% chance that the agent moves in the intended direction.
-* 33.33% chance that the agent stays in its current state.
-* 16.66% chance that the agent moves in the opposite direction.
-    
-For example, if the agent is in state S and takes the "R" action, then there is a 50% chance that it will move to state 4, a 33.33% chance that it will stay in state S, and a 16.66% chance that it will move to state 2.
+*    50% chance that the agent moves in the intended direction.
+*    33.33% chance that the agent stays in its current state.
+*    16.66% chance that the agent moves in the opposite direction.
 
-#### REWARD
+For example, if the agent is in state S and takes the "R" action, then there is a 50% chance that it will move to state 4, a 33.33% chance that it will stay in state S, and a 16.66% chance that it will move to state 2.
+REWARD
 
 The agent receives a reward of +1 for reaching the goal state (G). The agent receives a reward of 0 for all other states.
-
 #### GRAPHICAL REPRESENTATION
-![image](https://github.com/Nivetham1710/q-learning/assets/94155183/f489f7a4-6999-43c5-9796-95b42a72ed41)
+![image](https://github.com/Nivetham1710/q-learning/assets/94155183/486144bc-1d1c-4022-ac64-087ea33f17bb)
 
 ## Q LEARNING ALGORITHM
-1) Initialize the Q-values arbitrarily for all state-action pairs.
-2) Repeat for each episode:
-    * Initialize the starting state.
-    * Repeat for each step of episode:
+1. Initialize the Q-values arbitrarily for all state-action pairs.
+2. Repeat for each episode:
+
+   *  Initialize the starting state.
+   *  Repeat for each step of episode:
         * Choose action from state using policy derived from Q (e.g., epsilon-greedy).
         * Take action, observe reward and next state.
         * Choose action from next state using policy derived from Q (e.g., epsilon-greedy).
         * Update Q(s, a) := Q(s, a) + alpha * [R + gamma * Q(s', a') - Q(s, a)]
         * Update the state and action.
-    * Until state is terminal.
-3) Until performance converges.
-4) Return Q.
+   * Until state is terminal.
+
+3. Until performance converges.
+4. Return Q
 
 ## Q LEARNING FUNCTION
-
-```python
+```
 
 def q_learning(env, gamma=1.0, init_alpha=0.5,
                min_alpha=0.01, alpha_decay_ratio=0.5, init_epsilon=1.0,
@@ -100,18 +98,18 @@ def q_learning(env, gamma=1.0, init_alpha=0.5,
 ```
 
 ## OUTPUT:
+### Optimal State Value Functions:
+![image](https://github.com/Nivetham1710/q-learning/assets/94155183/7614ec5f-60b0-4e68-8976-5d848e42436e)
 
-#### OPTIMAL STATE VALUE FUNCTIONS:
-![image](https://github.com/Nivetham1710/q-learning/assets/94155183/103afae0-4099-4a62-a3e4-61883341af2b)
+### Optimal Action Value Functions:
+![image](https://github.com/Nivetham1710/q-learning/assets/94155183/f0ce2403-04c4-4415-adfb-de3010083c09)
 
-#### OPTIMAL ACTION VALUE FUNCTION:
-![image](https://github.com/Nivetham1710/q-learning/assets/94155183/103cf20f-fabd-4206-bcb4-7b22e98146d1)
+### State value functions of Monte Carlo method:
+![image](https://github.com/Nivetham1710/q-learning/assets/94155183/fc4a61f2-3884-418f-aa2f-d1a59967eaee)
 
-#### STATE VALUE FUNCTION OF MONTE CARLO METHOD:
-![image](https://github.com/Nivetham1710/q-learning/assets/94155183/28593f64-787d-4234-93de-acfcf33bcb02)
+### State value functions of Qlearning method:
+![image](https://github.com/Nivetham1710/q-learning/assets/94155183/0f9e915d-dbf9-4ad8-a1e1-5a7fcd3dfb1d)
 
-#### STATE VALUE FUNCTION OF Q-LEARNING METHOD:
-![image](https://github.com/Nivetham1710/q-learning/assets/94155183/d562cc10-d466-4032-bed6-b4a0aa1999a3)
 
 ## RESULT:
 
